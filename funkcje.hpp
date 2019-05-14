@@ -298,20 +298,20 @@ void licz_x(double k1, double k2, double m1, double m2, double b1, double b2)
 	
 	for(int i=0; i<liczba_krokow; i++)
 	{
-		/*temp1 = pobudzenie[i];
+		temp1 = pobudzenie[i];
 		temp2 = pobudzenie[i+1];
 		trap = 0.5*(dl_kroku*A*x + temp1*dl_kroku*B + (dl_kroku+dl_kroku)*A*x + temp2*dl_kroku*B);
 		x_next = x + trap;
 		x1[i] = x_next.M[0][0];
 		x2[i] = x_next.M[1][0];
-		x = x_next;*/
+		x = x_next;
 		
-		temp1 = pobudzenie[i];
+		/*temp1 = pobudzenie[i];
 		trap = dl_kroku*A*x + temp1*dl_kroku*B; //metoda prostokatow
 		x_next = x + trap;
 		x1[i] = x_next.M[0][0];
 		x2[i] = x_next.M[1][0];
-		x = x_next;
+		x = x_next;*/
 	}
 		
 }
