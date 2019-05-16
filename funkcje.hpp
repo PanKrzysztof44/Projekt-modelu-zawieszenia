@@ -13,6 +13,7 @@ void rysuj_graf(HWND hwnd, int typ_pobudzenia, double stala, double skala_Y, dou
 void rysuj_osie(HWND hwnd);
 void rysuj_funkcje(double y[], HDC hdcOkno, double skala_Y, double skala_X);
 void licz_x(double k1, double k2, double m1, double m2, double b1, double b2);
+void zeruj_macierze(macierz &x);
 
 HPEN CzerwonePioro = CreatePen( PS_SOLID, 1, 0x0000FF ); //x2
 HPEN ZielonePioro = CreatePen( PS_SOLID, 1, 0x00FF00 ); //x1
@@ -295,6 +296,18 @@ void licz_x(double k1, double k2, double m1, double m2, double b1, double b2)
 	
 	double temp1;
 	double temp2;
+	macierz p1;
+	macierz p2;
+	macierz k3;
+	macierz k4;
+	
+	zeruj_macierze(x);
+	zeruj_macierze(p1);
+	zeruj_macierze(p2);
+	zeruj_macierze(k3);
+	zeruj_macierze(k4);
+	zeruj_macierze(trap);
+	zeruj_macierze(x_next);
 	
 	for(int i=0; i<liczba_krokow; i++)
 	{
@@ -307,13 +320,45 @@ void licz_x(double k1, double k2, double m1, double m2, double b1, double b2)
 		x = x_next;*/
 		
 		temp1 = pobudzenie[i];
-		trap = dl_kroku*A*x + temp1*dl_kroku*B; //metoda prostokatow
+		p1 = dl_kroku*A*x + temp1*dl_kroku*B;
+		p2 = dl_kroku*A*x + temp1*dl_kroku*B + 0.5*p1;
+		k3 = dl_kroku*A*x + temp1*dl_kroku*B + 0.5*p2;
+		k4 = dl_kroku*A*x + temp1*dl_kroku*B + k3;
+		trap = 0.6*(p1 + 2*p2 + 2*k3 + k4);
 		x_next = x + trap;
 		x1[i] = x_next.M[0][0];
 		x2[i] = x_next.M[1][0];
 		x = x_next;
 	}
 		
+}
+
+void zeruj_macierze(macierz &x)
+{
+		for(int i=0; i<4; i++) //wartosci poczatkowe x
+	{
+		for(int j=0; j<4; j++)
+		{
+			x.M[i][j] = 0;
+		}
+	}	
+
+	/*for(int i=0; i<4; i++) //wartosci poczatkowe x_next
+	{
+		for(int j=0; j<4; j++)
+		{
+			x_next.M[i][j] = 0;
+		}
+	}
+	
+	for(int i=0; i<4; i++) //wartosci poczatkowe trap
+	{
+		for(int j=0; j<4; j++)
+		{
+			trap.M[i][j] = 0;
+		}
+	}*/			
+	
 }
 
 #endif
