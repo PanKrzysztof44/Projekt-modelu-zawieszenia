@@ -327,30 +327,13 @@ void licz_x(double k1, double k2, double m1, double m2, double b1, double b2)
 
 void zeruj_macierze(macierz &x)
 {
-		for(int i=0; i<4; i++) //wartosci poczatkowe x
+		for(int i=0; i<4; i++)
 	{
 		for(int j=0; j<4; j++)
 		{
 			x.M[i][j] = 0;
 		}
-	}	
-
-	/*for(int i=0; i<4; i++) //wartosci poczatkowe x_next
-	{
-		for(int j=0; j<4; j++)
-		{
-			x_next.M[i][j] = 0;
-		}
-	}
-	
-	for(int i=0; i<4; i++) //wartosci poczatkowe trap
-	{
-		for(int j=0; j<4; j++)
-		{
-			trap.M[i][j] = 0;
-		}
-	}*/			
-	
+	}		
 }
 
 #endif
