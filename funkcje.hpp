@@ -270,7 +270,6 @@ void licz_x(double k1, double k2, double m1, double m2, double b1, double b2)
 	macierz x_n;
 	macierz x_next;
 	macierz trap;
-	macierz trap2;
 	macierz A;
 	macierz B;
 
@@ -302,34 +301,16 @@ void licz_x(double k1, double k2, double m1, double m2, double b1, double b2)
 	
 	
 	
-	double temp1;
-	double temp2;
+	double u;
 	
 	for(int i=0; i<liczba_krokow; i++)
 	{
-		/*temp1 = pobudzenie[i];
-		temp2 = pobudzenie[i+1];
-		trap = 0.5*(dl_kroku*A*x + temp1*dl_kroku*B + (dl_kroku+dl_kroku)*A*x + temp2*dl_kroku*B);
-		x_next = x + trap;
-		x1[i] = x_next.M[0][0];
-		x2[i] = x_next.M[1][0];
-		x = x_next;*/
-		
-		temp1 = pobudzenie[i];
-		trap = A*x + temp1*B; //metoda prostokatow
+		u = pobudzenie[i];
+		trap = A*x + u*B; //metoda prostokatow
 		x_next = x + dl_kroku*trap;
 		x1[i] = x_next.M[0][0];
 		x2[i] = x_next.M[1][0];
 		x = x_next;
-		
-		/*temp1 = pobudzenie[i];
-		temp2 = pobudzenie[i+1];
-		trap = A*x_i(x_n, i*dl_kroku) + temp1*B; //metoda prostokatow
-		trap2 = A*x_i(x_n, (i+1)*dl_kroku) + temp2*B;
-		x_next = x + 0.5*dl_kroku*(trap + trap2);
-		x1[i] = x_next.M[0][0];
-		x2[i] = x_next.M[1][0];
-		x = x_next;*/
 	}
 		
 }
