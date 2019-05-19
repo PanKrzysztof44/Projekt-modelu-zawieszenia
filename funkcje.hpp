@@ -313,32 +313,31 @@ void licz_x(double k1, double k2, double m1, double m2, double b1, double b2)
 	for(int i=0; i<liczba_krokow; i++)
 	{
 		/*temp1 = pobudzenie[i];
-		temp2 = pobudzenie[i+1];
-		trap = 0.5*(dl_kroku*A*x + temp1*dl_kroku*B + (dl_kroku+dl_kroku)*A*x + temp2*dl_kroku*B);
-		x_next = x + trap;
-		x1[i] = x_next.M[0][0];
-		x2[i] = x_next.M[1][0];
-		x = x_next;*/
-		
-		/*temp1 = pobudzenie[i];
-		p1 = dl_kroku*A*x + temp1*dl_kroku*B;
-		p2 = dl_kroku*A*x + temp1*dl_kroku*B + 0.5*p1;
-		k3 = dl_kroku*A*x + temp1*dl_kroku*B + 0.5*p2;
-		k4 = dl_kroku*A*x + temp1*dl_kroku*B + k3;
-		trap = 0.6*(p1 + 2*p2 + 2*k3 + k4);
+		trap = dl_kroku*A*x + temp1*dl_kroku*B;
 		x_next = x + trap;
 		x1[i] = x_next.M[0][0];
 		x2[i] = x_next.M[1][0];
 		x = x_next;*/
 		
 		temp1 = pobudzenie[i];
+		p1 = dl_kroku*A*x + temp1*dl_kroku*B;
+		p2 = dl_kroku*A*x + temp1*dl_kroku*B + 0.5*p1;
+		k3 = dl_kroku*A*x + temp1*dl_kroku*B + 0.5*p2;
+		k4 = dl_kroku*A*x + temp1*dl_kroku*B + k3;
+		trap = (0.1666666666667)*(p1 + 2*p2 + 2*k3 + k4);
+		x_next = x + trap;
+		x1[i] = x_next.M[0][0];
+		x2[i] = x_next.M[1][0];
+		x = x_next;
+		
+	/*	temp1 = pobudzenie[i];
 		temp2 = pobudzenie[i+1];
 		trap = 0.5*(dl_kroku*A*x + temp1*dl_kroku*B + (dl_kroku+dl_kroku)*A*x + temp2*dl_kroku*B);
 		x_next = x + trap;
 		x1[i] = x_next.M[0][0];
 		x2[i] = x_next.M[1][0];
 		x = x_next;
-		
+		*/
 
 	}
 		
