@@ -297,16 +297,8 @@ void licz_x(double k1, double k2, double m1, double m2, double b1, double b2)
 	
 	double u1;
 	double u2;
-	macierz p1;
-	macierz p2;
-	macierz k3;
-	macierz k4;
 	
 	zeruj_macierze(x);
-	zeruj_macierze(p1);
-	zeruj_macierze(p2);
-	zeruj_macierze(k3);
-	zeruj_macierze(k4);
 	zeruj_macierze(trap1);
 	zeruj_macierze(trap2);
 	zeruj_macierze(x_next);
