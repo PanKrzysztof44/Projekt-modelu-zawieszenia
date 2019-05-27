@@ -82,7 +82,7 @@ void rysuj_graf(HWND hwnd, int typ_pobudzenia, double stala, double skala_Y, dou
 								
 	if(typ_pobudzenia == 1)//fala prost.
 	{		
-		int szerokosc_fali = 100;	
+		int szerokosc_fali = 2000;	
 		int k = 0;
 		
 		while(k < liczba_krokow)//liczenie pobudzenia
